@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rest-client', '~> 1.7.2'
 gem 'haml', '~> 4.0.6'
 gem 'simple_form', '~> 3.1.0'
+gem 'momentjs-rails', '~> 2.8.3'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -2,6 +2,6 @@
 
 = simple_form_for :search, url: places_path do |p|
   = p.input :group_id
-  = p.input :start_date
-  = p.input :end_date
+  = p.input :start_date, :as => :date_picker
+  = p.input :end_date, :as => :date_picker
   = p.button :submit
