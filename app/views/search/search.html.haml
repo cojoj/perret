@@ -2,6 +2,6 @@
 
 = simple_form_for :search, url: places_path do |p|
   = p.input :group_id
-  = p.input :start_date, :input_html => { :class => 'datepicker', :onclick => "datetimepicker()" }
-  = p.input :end_date, :input_html => { :class => 'datepicker', :onclick => "datetimepicker()" }
+  = p.input :start_date, placeholder: Time.now.strftime("%m/%d/%Y"), :input_html => { :class => 'datepicker' }
+  = p.input :end_date, placeholder: Time.now.strftime("%m/%d/%Y"), :input_html => { :class => 'datepicker' }
   = p.button :submit
