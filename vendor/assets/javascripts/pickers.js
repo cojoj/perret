@@ -8,7 +8,7 @@ $(document).on('ready page:change', function() {
 $(document).on('ready page:change', function() {
   $('.datetimepicker').datetimepicker({
       direction: 'bottom',
-pickSeconds: false
+      pickSeconds: false
   });
 });
 

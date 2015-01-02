@@ -2,6 +2,11 @@
 
 = simple_form_for :search, url: places_path do |p|
   = p.input :group_id
-  = p.input :start_date, :as => :date_picker
+  = p.input :start_date, :as => :date_picker, :input_html => { :class => 'datetimepicker', :onclick => "datetimepicker()" }
   = p.input :end_date, :as => :date_picker
   = p.button :submit
+
+:javascript
+  function show() {
+    alert("Hello! I am an alert box!!");
+  }
