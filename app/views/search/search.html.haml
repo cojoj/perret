@@ -1,5 +1,7 @@
-%h1 All places
+%h1 Look for available places
 
-- @places.each do |p|
-  = p['name']
-  %br
+= simple_form_for :search, url: places_path do |p|
+  = p.input :group_id
+  = p.input :start_date
+  = p.input :end_date
+  = p.button :submit
