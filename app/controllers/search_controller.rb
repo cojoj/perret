@@ -3,6 +3,7 @@ require 'dev_plan'
 class SearchController < ApplicationController
 
   def search
+    @groups = JSON.parse(DevPlan.instance.groups).map { |g| Group.new(g) }
   end
 
   def available_places
