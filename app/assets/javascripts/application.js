@@ -17,8 +17,4 @@
 //= require bootstrap
 //= require turbolinks
 //= require moment
-//= require bootstrap-datetimepicker
-//= require pickers
-//= require bootstrap3-typeahead.min
-//= require bootstrap3-autocomplete-input.min
 //= require_tree .

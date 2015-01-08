@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap-datetimepicker
+ *= require custom-theme/jquery-ui-1.10.3.theme
+ *= require custom-theme/jquery-ui-1.10.3.custom
+ *= require custom-theme/jquery.ui.1.10.3.ie
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";

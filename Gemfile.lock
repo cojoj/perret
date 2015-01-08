@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/zpaulovics/datetimepicker-rails.git
-  revision: d0f8a68f30d7ffb34e505845a693df27467424f3
-  branch: master
-  submodules: true
-  specs:
-    datetimepicker-rails (3.1.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -49,8 +41,6 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
-    bootstrap3_autocomplete_input (0.0.4)
-      rails (~> 4.1)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -175,10 +165,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.3.1.0)
-  bootstrap3_autocomplete_input
   byebug
   coffee-rails (~> 4.1.0)
-  datetimepicker-rails!
   haml (~> 4.0.6)
   jbuilder (~> 2.0)
   jquery-rails

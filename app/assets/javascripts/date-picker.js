@@ -3,12 +3,12 @@
  */
 
 $(document).on('ready page:change', function () {
-    $('#start_date_picker').datetimepicker({
+    $('#start_date_picker').datepicker({
         format: 'YYYY-MM-DD',
         direction: 'bottom',
         pickTime: false
     });
-    $('#end_date_picker').datetimepicker({
+    $('#end_date_picker').datepicker({
         format: 'YYYY-MM-DD',
         direction: 'bottom',
         pickTime: false

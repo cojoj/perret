@@ -1,7 +1,7 @@
 %h1 Look for available places
 
 = simple_form_for :search, url: places_path do |p|
-  = p.input :group_name, :as => :autocomplete, :source_array => @groups.map { |g| g.name }
+  -#= p.input :group_name, :as => :autocomplete, :source_array => @groups.map { |g| g.name }
   = p.input :start_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' }
   = p.input :end_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' }
   = p.input :computer_lab, as: :boolean, boolean_style: :inline
