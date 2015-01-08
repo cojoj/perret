@@ -12,13 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require turbolinks
 //= require moment
-//= require bootstrap-datetimepicker
-//= require pickers
-//= require bootstrap3-typeahead.min
-//= require bootstrap3-autocomplete-input.min
 //= require_tree .
