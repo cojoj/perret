@@ -2,7 +2,7 @@ require 'dev_plan'
 
 class SearchController < ApplicationController
 
-  before_filter :get_groups, :only  => [ :search, :available_places ]
+  before_filter :get_groups, :only  => [ :search, :available_places, :autocomplete ]
 
   def search
   end
@@ -15,6 +15,10 @@ class SearchController < ApplicationController
     end_date = search_params[:end_date]
 
     @places = DevPlan.instance.available_places(id, start_date, end_date)
+  end
+
+  def autocomplete
+    render json: @groups.map { |g| { :label => g.name, :value => g.id } }
   end
 
   private

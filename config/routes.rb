@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'search' => 'search#search'
+  get 'autocomplete' => 'search#autocomplete'
   post 'places' => 'search#available_places'
 
   # The priority is based upon order of creation: first created -> highest priority.
