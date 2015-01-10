@@ -21,13 +21,16 @@ class DevPlan
     places = JSON.parse(@client[PLACES_URL].get)
   end
 
-  def available_places(id, start_date, end_date, block_size = 2)
-    places = JSON.parse(@client[AVAILABLE_PLACES_URL].get params: {
-                                                   group_id:  id,
-                                                   start_date: start_date,
-                                                   end_date: end_date,
-                                                   block_size: block_size
-                                               })
+  def available_places(id, start_date, end_date, block_size = 2, internal = false)
+    uri = CGI.unescape({
+        group_id: id,
+        start_date: start_date,
+        end_date: end_date,
+        block_size: block_size,
+        internal_only: internal
+    }.to_query)
+
+    places = JSON.parse(@client[AVAILABLE_PLACES_URL+"?"+uri].get)
   end
 
 end
