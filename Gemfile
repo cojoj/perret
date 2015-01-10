@@ -33,7 +33,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'rest-client', '~> 1.7.2'
-gem 'haml', '~> 4.0.6'
 gem 'simple_form', '~> 3.1.0'
 
 group :development, :test do
