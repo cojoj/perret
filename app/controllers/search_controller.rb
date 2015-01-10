@@ -9,7 +9,7 @@ class SearchController < ApplicationController
 
   def available_places
     search_params = params[:search]
-    ids = search_params[:groups].split(",").map(&:to_i)
+    ids = search_params[:groups].split(",")
     start_date = search_params[:start_date]
     end_date = search_params[:end_date]
 

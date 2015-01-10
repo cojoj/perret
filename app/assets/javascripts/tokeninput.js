@@ -1,7 +1,7 @@
 /**
  * Created by cojoj on 10.01.15.
  */
-$(document).on('ready', function () {
+$(document).on('page:change', function () {
     $.ajax({
         url: '/autocomplete.json',
         success: function(groups) {
@@ -12,7 +12,8 @@ $(document).on('ready', function () {
                 searchingText: "",
                 noResultText: "Brak pasujących grup",
                 hintText: "",
-                searchDelay: 0
+                searchDelay: 0,
+                preventDuplicates: true
             })
         }
     })
