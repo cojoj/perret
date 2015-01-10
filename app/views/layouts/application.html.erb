@@ -1,0 +1,58 @@
+%html
+  %head
+    %title= content_for?(:title) ? yield(:title) : "App_Name"
+    %meta{:content => content_for?(:description) ? yield(:description) : "App_Name", :name => "description"}
+    = stylesheet_link_tag :application, :media => "all"
+    = javascript_include_tag :application
+    = csrf_meta_tags
+    = yield(:head)
+  %body
+    %header.navbar.navbar-default{role: "navigation"}
+  // Brand and toggle get grouped for better mobile display
+  %div.navbar-header
+    %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", type: "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to 'Banana', localhost:3000, class: 'navbar-brand'
+
+  // Collect the nav links, forms, and other content for toggling
+  %div.collapse.navbar-collapse.navbar-ex1-collapse
+    %ul.nav.navbar-nav
+      %li.active
+        = link_to 'Link', '#'
+      %li
+        = link_to 'Link', '#'
+      %li.dropdown
+        %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
+          Dropdown
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to 'Action', '#'
+          %li
+            = link_to 'Another action', '#'
+          %li
+            = link_to 'Something else here', '#'
+          %li.divider
+          %li
+            = link_to 'Separated link', '#'
+          %li
+            = link_to 'One more separated link', '#'
+    %ul.nav.navbar-nav.navbar-right
+      %li.dropdown
+        %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
+          Dropdown
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to 'Action', '#'
+          %li
+            = link_to 'Another action', '#'
+          %li
+            = link_to 'Something else here', '#'
+          %li.divider
+          %li
+            = link_to 'Separated link', '#'
+
