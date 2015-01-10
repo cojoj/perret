@@ -18,7 +18,7 @@ class SearchController < ApplicationController
   end
 
   def autocomplete
-    render json: @groups.map { |g| { :label => g.name, :value => g.id } }
+    render json: @groups.map { |g| { label: g.name, id: g.id } }
   end
 
   private
