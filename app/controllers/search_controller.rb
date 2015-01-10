@@ -2,19 +2,18 @@ require 'dev_plan'
 
 class SearchController < ApplicationController
 
-  before_filter :get_groups, :only  => [ :search, :available_places, :autocomplete ]
+  before_filter :get_groups, :only  => [ :search, :autocomplete ]
 
   def search
   end
 
   def available_places
     search_params = params[:search]
-    groups = @groups.select { |g| g.name == search_params[:group_name] }
-    id = groups.first.id
+    ids = search_params[:groups].split(",").map(&:to_i)
     start_date = search_params[:start_date]
     end_date = search_params[:end_date]
 
-    @places = DevPlan.instance.available_places(id, start_date, end_date)
+    @places = DevPlan.instance.available_places(ids, start_date, end_date)
   end
 
   def autocomplete

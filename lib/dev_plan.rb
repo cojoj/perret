@@ -21,12 +21,15 @@ class DevPlan
     places = JSON.parse(@client[PLACES_URL].get)
   end
 
-  def available_places(id, start_date, end_date, block_size = 2)
+  def available_places(id, start_date, end_date, block_size = 2, internal = false)
+    ids = id.map { |i| "group_id[]=" + i.to_s }.join("&")
+    p ids
     places = JSON.parse(@client[AVAILABLE_PLACES_URL].get params: {
-                                                   group_id:  id,
+                                                   group_id: ids,
                                                    start_date: start_date,
                                                    end_date: end_date,
-                                                   block_size: block_size
+                                                   block_size: block_size,
+                                                   internal_only: internal
                                                })
   end
 
