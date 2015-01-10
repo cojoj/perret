@@ -12,8 +12,10 @@ class SearchController < ApplicationController
     ids = search_params[:groups].split(",")
     start_date = search_params[:start_date]
     end_date = search_params[:end_date]
+    block_size = search_params[:block_size]
+    internal = search_params[:internal]
 
-    @places = DevPlan.instance.available_places(ids, start_date, end_date)
+    @places = DevPlan.instance.available_places(ids, start_date, end_date, block_size, internal)
   end
 
   def autocomplete

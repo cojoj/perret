@@ -1,9 +1,11 @@
 <h1>Look for available places</h1>
 
 <%= simple_form_for :search, url: places_path do |p| %>
-  <%= p.input :groups, :input_html => { :id => 'tokeninput' } %>
-  <%= p.input :start_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
-  <%= p.input :end_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' } %>
-  <%= p.input :computer_lab, as: :boolean, boolean_style: :inline %>
-  <%= p.button :submit %>
+    <%= p.input :groups, :input_html => { :id => 'tokeninput' } %>
+    <%= p.input :start_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
+    <%= p.input :end_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' } %>
+    <%= p.input :block_size, collection: 1..16, selected: 2 %>
+    <%= p.input :computer_lab, as: :boolean, boolean_style: :inline %>
+    <%= p.input :internal, as: :boolean, boolean_style: :inline, :input_html => { :checked => true } %>
+    <%= p.button :submit %>
 <% end %>
