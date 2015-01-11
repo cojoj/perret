@@ -28,4 +28,12 @@ class SearchController < ApplicationController
     @groups = DevPlan.instance.groups
   end
 
+
+  def rooms
+
+  end
+
+  def available_rooms
+
+  end
 end

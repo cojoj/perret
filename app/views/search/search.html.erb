@@ -9,3 +9,11 @@
     <%= p.input :internal, as: :boolean, boolean_style: :inline, :input_html => { :checked => true } %>
     <%= p.button :submit %>
 <% end %>
+
+
+
+<%= simple_form_for :room, url: rooms_path do |r| %>
+    <%= r.input :room, :input_html => { :id => 'tokeninput' } %>
+    <%= r.input :start_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
+    <%= r.button :submit %>
+<% end %>
