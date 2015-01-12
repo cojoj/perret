@@ -1,11 +1,48 @@
 <h1>Look for available places</h1>
 
-<%= simple_form_for :search, url: places_path do |p| %>
-    <%= p.input :groups, :input_html => { :id => 'tokeninput' } %>
-    <%= p.input :start_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
-    <%= p.input :end_date, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' } %>
-    <%= p.input :block_size, collection: 1..16, selected: 2 %>
-    <%= p.input :computer_lab, as: :boolean, boolean_style: :inline %>
-    <%= p.input :internal, as: :boolean, boolean_style: :inline, :input_html => { :checked => true } %>
-    <%= p.button :submit %>
-<% end %>
+
+
+
+
+<div class="well bs-component">
+    <form class="form-horizontal">
+      <%= simple_form_for :search, url: places_path do |p| %>
+      <fieldset>
+        <legend>Wyszukiwarka</legend>
+        <div class="form-group">
+            <%= p.input :groups, :class => "col-lg-10", :input_html => { :id => 'tokeninput' } %>
+
+        </div>
+
+        <div class="form-group">
+          <%= p.input :start_date, :class => "col-lg-10", placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
+        </div>
+
+        <div class="form-group">
+          <%= p.input :end_date, :class => "col-lg-10", placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' } %>
+        </div>
+
+        <div class="form-group">
+          <%= p.input :block_size, :class => "form-control", collection: 1..16, selected: 2 %>
+        </div>
+
+        <div class="form-group">
+          <%= p.input :computer_lab, as: :boolean, boolean_style: :inline %>
+        </div>
+
+        <div class="form-group">
+          <%= p.input :internal, as: :boolean, boolean_style: :inline, :input_html => { :checked => true } %>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <%= p.button :submit, :class => "btn btn-primary" %>
+          </div>
+        </div>
+
+      </fieldset>
+      <% end %>
+    </form>
+</div>
+
+
