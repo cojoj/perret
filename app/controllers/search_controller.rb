@@ -34,6 +34,11 @@ class SearchController < ApplicationController
   end
 
   def available_rooms
+    room_params = params[:room]
+    p room_params
 
+
+    @rooms = DevPlan.instance.available_rooms(room_params[:room], room_params[:start_date])
+    p @rooms
   end
 end
