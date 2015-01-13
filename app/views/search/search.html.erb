@@ -1,48 +1,63 @@
-<h1>Look for available places</h1>
-
-
-
-
-
+<div class="row">
+ <div class="col-lg-6">
 <div class="well bs-component">
     <form class="form-horizontal">
       <%= simple_form_for :search, url: places_path do |p| %>
       <fieldset>
         <legend>Wyszukiwarka</legend>
         <div class="form-group">
-            <%= p.input :groups, :class => "col-lg-10", :input_html => { :id => 'tokeninput' } %>
-
+          <label class="col-lg-2 control-label">Wybierz grupy: </label>
+          <div class="col-lg-10">
+            <%= p.input :groups, :class => "col-lg-10", label: false, :input_html => { :id => 'tokeninput' } %>
+          </div>
         </div>
 
         <div class="form-group">
-          <%= p.input :start_date, :class => "col-lg-10", placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
+          <label class="col-lg-2 control-label">Szukaj od: </label>
+          <div class="col-lg-10">
+            <%= p.input :start_date, :class => "form-control", label: false, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
+          </div>
         </div>
 
         <div class="form-group">
-          <%= p.input :end_date, :class => "col-lg-10", placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' } %>
+          <label class="col-lg-2 control-label">Szukaj do: </label>
+          <div class="col-lg-10">
+            <%= p.input :end_date, :class => "form-control", label: false, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' } %>
+          </div>
         </div>
 
         <div class="form-group">
-          <%= p.input :block_size, :class => "form-control", collection: 1..16, selected: 2 %>
+          <label class="col-lg-2 control-label">Ilość wolnych bloków zajęć </label>
+          <div class="col-lg-10">
+            <%= p.input :block_size, label: false, :class => "form-control", collection: 1..16, selected: 2 %>
+          </div>
         </div>
 
         <div class="form-group">
-          <%= p.input :computer_lab, as: :boolean, boolean_style: :inline %>
+          <label class="col-lg-2 control-label">Pracownia komputerowa: </label>
+          <div class="col-lg-10">
+            <%= p.input :computer_lab, as: :boolean, :class => "form-control", label: false, boolean_style: :inline %>
+         </div>
         </div>
 
         <div class="form-group">
-          <%= p.input :internal, as: :boolean, boolean_style: :inline, :input_html => { :checked => true } %>
+          <label class="col-lg-2 control-label">Internal</label>
+          <div class="col-lg-10">
+            <%= p.input :internal, as: :boolean, boolean_style: :inline, :class => "form-control", label: false, :input_html => { :checked => true } %>
+          </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10 col-lg-offset-2">
-            <%= p.button :submit, :class => "btn btn-primary" %>
+            <%= p.button :submit, 'Szukaj', :class => "btn btn-primary" %>
           </div>
         </div>
 
       </fieldset>
       <% end %>
     </form>
+</div>
+</div>
 </div>
 
 
