@@ -8,6 +8,7 @@ class DevPlan
   GROUPS_URL = "groups"
   PLACES_URL = "places"
   AVAILABLE_PLACES_URL = "places/available"
+  ROOM_URL = "places"
 
   def initialize
     @client = RestClient::Resource.new(BASE_API_URL)
@@ -31,6 +32,14 @@ class DevPlan
     }.to_query)
 
     places = JSON.parse(@client[AVAILABLE_PLACES_URL+"?"+uri].get)
+  end
+
+  def available_rooms(id, start_date)
+
+    # rooms = JSON.parse(@client["place/" + id + "/availability?date=" + start_date])
+    # rooms = @client["place/" + id + "/availability?date=" + start_date].get
+    p @client["places/1/availability?date=2015-01-13"].get
+    rooms = @client["places/1/availability?date=2015-01-13"].get
   end
 
 end
