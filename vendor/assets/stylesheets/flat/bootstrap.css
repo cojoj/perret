@@ -6560,3 +6560,8 @@ a.list-group-item-danger.active:focus {
 .popover {
     color: #2c3e50;
 }
+
+.simple_form input, .simple-form select {
+    position: relative;
+    top: 8px;
+}

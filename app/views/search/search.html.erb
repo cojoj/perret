@@ -6,8 +6,12 @@
       <fieldset>
         <legend>Wyszukiwarka</legend>
 
-            <%= p.input :groups, :class => "col-lg-12", placeholder: 'Wyszukaj grupy', label: false, :input_html => { :id => 'tokeninput' } %>
-
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Grupy: </label>
+          <div class="col-lg-10">
+            <%= p.input :groups, placeholder: 'Wyszukaj grupy', label: false, :input_html => { :id => 'tokeninput', :class => 'col-md-12' } %>
+          </div>
+        </div>
 
         <div class="form-group">
           <label class="col-lg-2 control-label">Szukaj od: </label>
