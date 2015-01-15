@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="well bs-component">
+      <%= simple_form_for :search_room, url: available_hours_path do |p| %>
+          <fieldset>
+            <legend>Wyszukiwarka</legend>
+
+            <div class="form-group">
+              <%= p.input :room, :class => "col-lg-12", placeholder: 'Wyszukaj sali', label: false, :input_html => { :id => 'roomsinput' } %>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Szukaj dla: </label>
+              <div class="col-lg-10">
+                <%= p.input :date, :class => "form-control", label: false, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'start_date_picker' } %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <%= p.button :submit, 'Szukaj', :class => "btn btn-primary" %>
+              </div>
+            </div>
+
+          </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
