@@ -8,7 +8,7 @@ $(document).ready(function () {
         success: function(rooms) {
             $('#roomsinput').tokenInput(rooms, {
                 theme: "facebook",
-                tokenLimit: 10,
+                tokenLimit: 1,
                 resultsLimit: 10,
                 searchingText: "Wyszukuje",
                 noResultText: "Brak pasujących sal",

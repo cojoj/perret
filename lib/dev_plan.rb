@@ -39,14 +39,16 @@ class DevPlan
   end
 
   def available_rooms(id, start_date)
-
-    # rooms = JSON.parse(@client["place/" + id + "/availability?date=" + start_date])
-    # rooms = @client["place/" + id + "/availability?date=" + start_date].get
-    p "available rooms"
     p id
     p start_date
-    p @client["places/1/availability?date=2015-01-13"].get
-    rooms = @client["places/1/availability?date=2015-01-13"].get
+    p "places/" + id + "/availability?date=" + start_date
+    rooms = JSON.parse(@client["places/" + id + "/availability?date=" + start_date].get).map { |h| Hour.new(h)}
+    # rooms = @client["place/" + id + "/availability?date=" + start_date].get
+    # p "available rooms"
+    # p id
+    # p start_date
+    # p @client["places/1/availability?date=2015-01-13"].get
+    # rooms = @client["places/1/availability?date=2015-01-13"].get
     p rooms
     return rooms
   end
