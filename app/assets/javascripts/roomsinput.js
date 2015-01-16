@@ -4,9 +4,9 @@
 
 $(document).ready(function () {
     $.ajax({
-        url: '/autocomplete.json',
+        url: '/autocompleterooms.json',
         success: function(rooms) {
-            $('#tokeninput').tokenInput(rooms, {
+            $('#roomsinput').tokenInput(rooms, {
                 theme: "facebook",
                 tokenLimit: 10,
                 resultsLimit: 10,

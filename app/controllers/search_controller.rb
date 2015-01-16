@@ -24,7 +24,7 @@ class SearchController < ApplicationController
   end
 
   def autorooms
-    render json: @groups.map { |g| { name: g.name, id: g.id } }
+    render json: @rooms.map { |g| { name: g.name, id: g.id } }
   end
 
   private

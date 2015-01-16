@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'search' => 'search#search'
   get 'autocomplete' => 'search#autocomplete'
+  get 'autocompleterooms' => 'search#autorooms'
   post 'places' => 'search#available_places'
   get 'rooms' => 'search#rooms'
   get 'project' => 'welcome#about_project'

@@ -20,6 +20,10 @@ class DevPlan
 
   def places
     places = JSON.parse(@client[PLACES_URL].get)
+
+    p places
+
+    return places
   end
 
   def available_places(id, start_date, end_date, block_size = 2, internal = false)
