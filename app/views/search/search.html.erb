@@ -1,12 +1,16 @@
 <div class="row">
  <div class="col-lg-12">
 <div class="well bs-component">
+  <div class="form-horizontal">
       <%= simple_form_for :search, url: places_path do |p| %>
       <fieldset>
         <legend>Wyszukiwarka</legend>
 
         <div class="form-group">
-            <%= p.input :groups, :class => "col-lg-12", placeholder: 'Wyszukaj grupy', label: false, :input_html => { :id => 'tokeninput' } %>
+          <label class="col-lg-2 control-label">Grupy: </label>
+          <div class="col-lg-10">
+            <%= p.input :groups, placeholder: 'Wyszukaj grupy', label: false, :input_html => { :id => 'tokeninput', :class => 'col-md-12' } %>
+          </div>
         </div>
 
         <div class="form-group">
@@ -54,6 +58,7 @@
       <% end %>
 </div>
 </div>
+   </div>
 </div>
 
 
