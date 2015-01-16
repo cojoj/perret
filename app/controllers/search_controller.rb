@@ -27,6 +27,15 @@ class SearchController < ApplicationController
     render json: @rooms.map { |g| { name: g.name, id: g.id } }
   end
 
+  def available_hours
+    room_params = params[:search_room]
+    p room_params
+
+
+    @available_hours = DevPlan.instance.available_rooms(room_params[:room], room_params[:date])
+    p @available_hours
+  end
+
   private
 
   def get_groups
@@ -42,12 +51,5 @@ class SearchController < ApplicationController
 
   end
 
-  def available_rooms
-    room_params = params[:search_room]
-    p room_params
 
-
-    @rooms = DevPlan.instance.available_rooms(room_params[:room], room_params[:start_date])
-    p @rooms
-  end
 end

@@ -19,7 +19,7 @@ class DevPlan
   end
 
   def places
-    places = JSON.parse(@client[PLACES_URL].get)
+    places = JSON.parse(@client[PLACES_URL].get).map { |r| Room.new(r)}
 
     p places
 
@@ -42,8 +42,13 @@ class DevPlan
 
     # rooms = JSON.parse(@client["place/" + id + "/availability?date=" + start_date])
     # rooms = @client["place/" + id + "/availability?date=" + start_date].get
+    p "available rooms"
+    p id
+    p start_date
     p @client["places/1/availability?date=2015-01-13"].get
     rooms = @client["places/1/availability?date=2015-01-13"].get
+    p rooms
+    return rooms
   end
 
 end
