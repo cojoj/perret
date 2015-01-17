@@ -3,6 +3,7 @@ require 'dev_plan'
 class SearchController < ApplicationController
 
   before_filter :get_groups, :only  => [ :search, :autocomplete ]
+  before_filter :get_rooms
 
   def search
   end
@@ -22,10 +23,27 @@ class SearchController < ApplicationController
     render json: @groups.map { |g| { name: g.name, id: g.id } }
   end
 
+  def autorooms
+    render json: @rooms.map { |g| { name: g.name, id: g.id } }
+  end
+
+  def available_hours
+    room_params = params[:search_room]
+    p room_params
+
+
+    @available_hours = DevPlan.instance.available_rooms(room_params[:room], room_params[:date])
+    p @available_hours
+  end
+
   private
 
   def get_groups
     @groups = DevPlan.instance.groups
+  end
+
+  def get_rooms
+    @rooms = DevPlan.instance.places
   end
 
 
@@ -33,12 +51,5 @@ class SearchController < ApplicationController
 
   end
 
-  def available_rooms
-    room_params = params[:room]
-    p room_params
 
-
-    @rooms = DevPlan.instance.available_rooms(room_params[:room], room_params[:start_date])
-    p @rooms
-  end
 end
