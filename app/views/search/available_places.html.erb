@@ -12,6 +12,7 @@
         for (var i = 0; i < parsed_data_all.length; i++)
         {
             var day_data = parsed_data_all[i];
+            day_data.allDay = false;
             day_data.title = day_data.starts_at + ' - ' + day_data.ends_at;
             day_data.start = day_data.date + 'T' + day_data.starts_at;
             day_data.end = day_data.date + 'T' + day_data.ends_at;
@@ -26,6 +27,7 @@
 
         }
         data = parsed_data;
+        console.log(data);
         var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
             'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
         var days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa',
@@ -41,18 +43,17 @@
             buttonText:
             {
                 today:    'dzisiaj',
-                month:    'miesiać',
+                month:    'miesiąc',
                 week:     'tydzień',
                 day:      'dzień'
             },
             firstDay: 1,
+            allDaySlot: false,
             theme: true,
-            editable: true,
-            timeFormat: 'H(:mm)',
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month'
+                right: 'month, agendaWeek'
             },
             defaultView: 'month',
             height: 500,
