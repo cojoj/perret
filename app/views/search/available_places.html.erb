@@ -1,20 +1,88 @@
-<html>
-<head>
-  <link rel="stylesheet" href="calendar/css/calendar.css">
-</head>
-<body>
-<h1>Available places</h1>
-<div id="calendar"></div>
+<h1>Dostępne miejsca</h1>
+<br>
 
-<script type="text/javascript" src="calendar/js/calendar.js"></script>
-<script type="text/javascript">
-    var calendar = $("#calendar").calendar(
+<script>
+
+    $(document).ready(function() {
+
+        var data = '<%= @places.to_json %>';
+        data = data.replace(/&quot;/g, '"');
+        var parsed_data = [];
+        var parsed_data_all = JSON && JSON.parse(data);
+        for (var i = 0; i < parsed_data_all.length; i++)
+        {
+            var day_data = parsed_data_all[i];
+            day_data.title = day_data.starts_at + ' - ' + day_data.ends_at;
+            day_data.start = day_data.date + 'T' + day_data.starts_at;
+            day_data.end = day_data.date + 'T' + day_data.ends_at;
+            day_data.description = 'Wolne sale: <br><br>';
+            parsed_data.push(day_data);
+            var places = day_data.available_places;
+
+            for (var j = 0; j < places.length; j++)
             {
-                tmpl_path: "/calendar/tmpls/",
-                events_source: function () { return []; }
-            });
-</script>
-</body>
-</html>
+                day_data.description += ':: ' + places[j].full_location + '<br>';
+            }
 
-<%= @places %>
+        }
+        data = parsed_data;
+        var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
+            'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+        var days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa',
+            'Czwartek', 'Piątek', 'Sobota'];
+
+        $('#calendar').fullCalendar({
+            monthNames: months,
+            monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze',
+                'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
+            dayNames: days,
+            dayNamesShort: ['Nie', 'Pon', 'Wto', 'Śro',
+                'Czw', 'Pią', 'Sob'],
+            buttonText:
+            {
+                today:    'dzisiaj',
+                month:    'miesiać',
+                week:     'tydzień',
+                day:      'dzień'
+            },
+            firstDay: 1,
+            theme: true,
+            editable: true,
+            timeFormat: 'H(:mm)',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month'
+            },
+            defaultView: 'month',
+            height: 500,
+            slotMinutes: 15,
+            dragOpacity: "0.5",
+            eventLimit: true,
+            events: data,
+            eventClick: function(event) {
+                var modal = $("#modal");
+                modal.find(".modal-title").html(days[event.start.getDay()] + ',  '
+                    + event.start.getUTCDate() + '  ' + months[event.start.getMonth()]
+                    + '   ' + event.start.getFullYear() + '  (' + event.title + ')');
+                modal.find(".modal-body").html(event.description);
+                modal.modal();
+            }
+        })
+    });
+</script>
+
+<div id='calendar'></div>
+
+<div class="modal" role="dialog" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">title</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
