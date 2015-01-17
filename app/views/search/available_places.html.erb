@@ -13,7 +13,7 @@
         {
             var day_data = parsed_data_all[i];
             day_data.allDay = false;
-            day_data.title = day_data.starts_at + ' - ' + day_data.ends_at;
+            day_data.title = ' - ' + day_data.ends_at;
             day_data.start = day_data.date + 'T' + day_data.starts_at;
             day_data.end = day_data.date + 'T' + day_data.ends_at;
             day_data.description = 'Wolne sale: <br><br>';
@@ -59,7 +59,9 @@
             height: 500,
             slotMinutes: 15,
             dragOpacity: "0.5",
+            timeFormat: 'H(:mm)',
             eventLimit: true,
+            editable: true,
             events: data,
             eventClick: function(event) {
                 var modal = $("#modal");
