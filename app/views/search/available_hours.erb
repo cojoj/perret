@@ -1,3 +1,64 @@
-<p> Available hours:</p>
+<h1>Dostępne sale</h1>
+<br>
 
+<script>
+
+    $(document).ready(function() {
+
+        var data = '<%= @available_hours.to_json %>';
+        var date = '<%= @date %>';
+        data = data.replace(/&quot;/g, '"');
+        var parsed_data = [];
+        var parsed_data_all = JSON && JSON.parse(data);
+        for (var i = 0; i < parsed_data_all.length; i++)
+        {
+            var day = parsed_data_all[i];
+            day.start = date + 'T' + day.starts_at;
+            day.end = date + 'T' + day.ends_at;
+            day.title = ' -' + day.ends_at;
+            day.allDay = false;
+            console.log(day);
+            parsed_data.push(day);
+        }
+        data = parsed_data;
+
+        var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
+            'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+        var days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa',
+            'Czwartek', 'Piątek', 'Sobota'];
+
+        $('#calendar').fullCalendar({
+            monthNames: months,
+            monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze',
+                'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
+            dayNames: days,
+            dayNamesShort: ['Nie', 'Pon', 'Wto', 'Śro',
+                'Czw', 'Pią', 'Sob'],
+            buttonText:
+            {
+                today:    'dzisiaj',
+                month:    'miesiąc',
+                week:     'tydzień',
+                day:      'dzień'
+            },
+            firstDay: 1,
+            theme: true,
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'agendaDay'
+            },
+            defaultView: 'agendaDay',
+            height: 500,
+            slotMinutes: 60,
+            dragOpacity: "0.5",
+            timeFormat: 'H(:mm)',
+            eventLimit: true,
+            editable: true,
+            events: data
+        })
+    });
+</script>
 <%= @available_hours %>
+
+<div id='calendar'></div>
