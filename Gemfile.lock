@@ -58,7 +58,9 @@ GEM
     debugger-linecache (1.2.0)
     erubis (2.7.0)
     execjs (2.2.2)
-    fullcalendar-rails (1.6.4.0)
+    fullcalendar-rails (2.2.5.1)
+      jquery-rails (>= 3.1.1, < 5.0.0)
+      momentjs-rails (~> 2.8, >= 2.8.4)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -81,6 +83,8 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.0)
+    momentjs-rails (2.9.0)
+      railties (>= 3.1)
     multi_json (1.10.1)
     netrc (0.10.2)
     nokogiri (1.6.5)
@@ -165,10 +169,11 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.1.0)
   byebug
   coffee-rails (~> 4.1.0)
-  fullcalendar-rails
+  fullcalendar-rails (~> 2.2.5.1)
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails (= 4.0.3)
+  momentjs-rails (~> 2.9.0)
   rails (= 4.2.0)
   rest-client (~> 1.7.2)
   sass-rails (~> 5.0)
