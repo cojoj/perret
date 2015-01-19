@@ -1,7 +1,24 @@
 /**
  * Created by cojoj on 10.01.15.
  */
-$(document).ready(function () {
+
+$(document).on("ready page:load" ,function() {
+    $.ajax({
+        url: '/autocomplete_rooms.json',
+        success: function(rooms) {
+            $('#roomsinput').tokenInput(rooms, {
+                theme: "facebook",
+                tokenLimit: 1,
+                resultsLimit: 10,
+                searchingText: "Wyszukuje",
+                noResultsText: "Brak pasujących sal",
+                hintText: "Wpisz nazwę sali",
+                searchDelay: 0,
+                preventDuplicates: true
+            });
+        }
+    });
+
     $.ajax({
         url: '/autocomplete_groups.json',
         success: function(groups) {
@@ -10,11 +27,12 @@ $(document).ready(function () {
                 tokenLimit: 10,
                 resultsLimit: 10,
                 searchingText: "Wyszukuje",
-                noResultText: "Brak pasujących grup",
+                noResultsText: "Brak pasujących grup",
                 hintText: "Wpisz nazwę grupy",
                 searchDelay: 0,
                 preventDuplicates: true
-            })
+            });
         }
-    })
+    });
+
 });
