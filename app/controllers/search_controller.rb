@@ -2,8 +2,8 @@ require 'dev_plan'
 
 class SearchController < ApplicationController
 
-  before_filter :get_groups, only: [ :search_group, :autocomplete_groups ]
-  before_filter :get_rooms, only: [ :search_room, :autocomplete_rooms ]
+  before_filter :get_groups, only: [ :autocomplete_groups ]
+  before_filter :get_rooms, only: [ :autocomplete_rooms ]
 
   def index
   end
@@ -39,7 +39,7 @@ class SearchController < ApplicationController
   end
 
   def autocomplete_rooms
-    render json: @rooms.map { |g| { name: g.name, id: g.id } }
+    render json: @rooms.map { |g| { name: g.full_name, id: g.id } }
   end
 
   private
