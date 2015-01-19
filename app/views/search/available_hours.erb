@@ -17,7 +17,6 @@
             day.end = date + 'T' + day.ends_at;
             day.title = day.starts_at + ' - ' + day.ends_at;
             day.allDay = false;
-            console.log(day);
             parsed_data.push(day);
         }
         data = parsed_data;
@@ -27,11 +26,9 @@
         var days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa',
             'Czwartek', 'Piątek', 'Sobota'];
         var date_typeof_date = new Date(date);
-
+        console.log(date_typeof_date);
         $('#calendar').fullCalendar({
-            year: date_typeof_date.getYear(),
-            month: date_typeof_date.getMonth(),
-            date: date_typeof_date.getUTCDate(),
+            start: date_typeof_date,
             monthNames: months,
             monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze',
                 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],

@@ -24,7 +24,7 @@ class SearchController < ApplicationController
     end_date = search_params[:end_date]
     block_size = search_params[:block_size]
     internal = search_params[:internal]
-
+    @computer_lab = search_params[:computer_lab]
     @places = DevPlan.instance.available_places(ids, start_date, end_date, block_size, internal)
   end
 

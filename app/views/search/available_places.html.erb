@@ -6,6 +6,7 @@
     $(document).ready(function() {
 
         var data = '<%= @places.to_json %>';
+        var computer_lab = '<%= @computer_lab %>';
         data = data.replace(/&quot;/g, '"');
         var parsed_data = [];
         var parsed_data_all = JSON && JSON.parse(data);
@@ -22,7 +23,11 @@
 
             for (var j = 0; j < places.length; j++)
             {
-                day_data.description += ':: ' + places[j].full_location + '<br>';
+                if (computer_lab == '1' && !places[j].short_location.contains('lab.'))
+                {
+                    continue;
+                }
+                day_data.description += '- ' + places[j].full_location + '<br>';
             }
 
         }
