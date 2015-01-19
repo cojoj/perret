@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
     $.ajax({
-        url: '/autocomplete.json',
+        url: '/autocomplete_groups.json',
         success: function(groups) {
             $('#tokeninput').tokenInput(groups, {
                 theme: "facebook",
