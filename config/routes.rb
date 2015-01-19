@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  get 'search' => 'search#search'
-  get 'autocomplete' => 'search#autocomplete'
-  get 'autocompleterooms' => 'search#autorooms'
+  get 'search_group' => 'search#search_group'
+  get 'search_room' => 'search#search_room'
+  get 'autocomplete_groups' => 'search#autocomplete_groups'
+  get 'autocomplete_rooms' => 'search#autocomplete_rooms'
+  get 'project' => 'search#about_project'
   post 'places' => 'search#available_places'
-  get 'rooms' => 'search#rooms'
-  get 'project' => 'welcome#about_project'
-  post 'available_hours' => 'search#available_hours'
+  post 'hours' => 'search#available_hours'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root :to => "welcome#index"
+   root :to => "search#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
