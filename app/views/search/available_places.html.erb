@@ -6,8 +6,6 @@
     $(document).ready(function() {
 
         var data = '<%= @places.to_json %>';
-        //var computer_lab =
-        //console.log(computer_lab);
         data = data.replace(/&quot;/g, '"');
         var parsed_data = [];
         var parsed_data_all = JSON && JSON.parse(data);
@@ -24,53 +22,11 @@
 
             for (var j = 0; j < places.length; j++)
             {
-                console.log(places[j].short_name);
-                //if (computer_lab && !places[j].contains('lab.'))
-                //{
-                //  continue;
-                //}
                 day_data.description += ':: ' + places[j].full_location + '<br>';
             }
 
         }
         data = parsed_data;
-
-        var datas = [
-            {
-                title: 'Business Lunch',
-                start: '2014-11-03T13:00:00',
-                constraint: 'businessHours'
-            },
-            {
-                title: 'Meeting',
-                start: '2014-11-13T11:00:00',
-                constraint: 'availableForMeeting', // defined below
-                color: '#257e4a'
-            },
-            {
-                title: 'Conference',
-                start: '2015-01-18',
-                end: '2015-01-20'
-            },
-            {
-                title: 'Party',
-                start: '2015-01-29T20:00:00'
-            },
-// areas where "Meeting" must be dropped
-            {
-                id: 'availableForMeeting',
-                start: '2015-01-11T10:00:00',
-                end: '2015-01-11T16:00:00',
-                rendering: 'background'
-            },
-            {
-                id: 'availableForMeeting',
-                start: '2015-01-13T10:00:00',
-                end: '2015-01-13T16:00:00',
-                rendering: 'background'
-            },
-// red areas where no events can be dropped
-        ];
 
         var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
             'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
@@ -109,10 +65,11 @@
             events: data,
             eventClick: function(event) {
                 var modal = $("#modal");
-                modal.find(".modal-title").html(days[event.start.getDay()] + ',  '
-                    + event.start.getUTCDate() + '  ' + months[event.start.getMonth()]
-                    + '   ' + event.start.getFullYear()
-                    + '  (' + event.start.getHours() + ':' + event.start.getMinutes()
+                var date = new Date(event.start);
+                modal.find(".modal-title").html(days[date.getDay()] + ',  '
+                    + date.getUTCDate() + '  ' + months[date.getMonth()]
+                    + '   ' + date.getFullYear()
+                    + '  (' + date.getHours() + ':' + date.getMinutes()
                     + event.title + ')');
                 modal.find(".modal-body").html(event.description);
                 modal.modal();
