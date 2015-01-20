@@ -75,7 +75,7 @@
                 modal.find(".modal-title").html(days[date.getDay()] + ',  '
                     + date.getUTCDate() + '  ' + months[date.getMonth()]
                     + '   ' + date.getFullYear()
-                    + '  (' + date.getHours() + ':' + date.getMinutes()
+                    + '  (' + date.getUTCHours() + ':' + date.getMinutes()
                     + event.title + ')');
                 modal.find(".modal-body").html(event.description);
                 modal.modal();
