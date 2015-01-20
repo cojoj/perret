@@ -28,6 +28,10 @@
         var date_typeof_date = new Date(date);
         console.log(date_typeof_date);
         $('#calendar').fullCalendar({
+            defaultDate: new Date(date),
+            minTime: '07:30:00',
+            maxTime: '21:30:00',
+            allDaySlot: false,
             start: date_typeof_date,
             monthNames: months,
             monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze',
@@ -55,7 +59,6 @@
             dragOpacity: "0.5",
             timeFormat: 'H(:mm)',
             eventLimit: true,
-            editable: true,
             events: data
         })
     });
