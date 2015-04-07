@@ -1,53 +1,18 @@
- <div class="bs-example" background="#FFFFFF">
-  <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
-    <!-- Carousel indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-    </ol>
-    <!-- Carousel items -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <h2>Szukaj według grup dziekańskich</h2>
-        <div class="carousel-caption">
-          <h3>Wyszukuj możliwe terminy zajęć na podstawie grup dziekańskich</h3>
-          <p>Jeżeli chcesz sprawdzić wszystkie możliwe terminy, w których wybrane grupy dziekańskie nie mają innych zajęć oraz istnieją wolne sale, to ten projekt jest właśnie dla Ciebie.</p>
-        </div>
-      </div>
-      <div class="item">
-        <h2>Wyszukuj według sal</h2>
-        <div class="carousel-caption">
-          <h3>Sprawdzaj dostępność danych sal w określonym terminie</h3>
-          <p>Sprawdzanie dostępności określonych sal jeszcze nigdy nie było tak łatwe.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<style type="text/css">
-      h2{
-          margin: 0;
-          color: #666;
-          padding-top: 90px;
-          font-size: 52px;
-          font-family: "trebuchet ms", sans-serif;
-      }
-      .item{
-          background: #222;
-          text-align: center;
-          height: 400px !important;
-      }
-      .carousel{
-          margin-top: 20px;
-      }
-      .bs-example{
-          margin: 20px;
-      }
-</style>
-
-<script>
-    $('.carousel').carousel({
-        interval: 3000
-    })
-</script>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Szukaj według grup dziekańskich</h2>
+    <p class="lead">Wyszukuj możliwe terminy zajęć oraz sale dla wybranych grup dziekańskich</p>
+    <p class="text-justify">Znajdz wszystkie wolne sale w terminie, kiedy wybrane grup dziekańskie nie mają zajęć. Idealne rozwiązanie na wyznaczenie miejsca i terminu "odrobienia" zajęć.</p>
+    <p class="text-center">
+      <%= link_to 'Szukaj wg grup', search_group_path, {class: 'btn btn-success'} %>
+    </p>
+  </div><!-- /.col-md-6 -->
+  <div class="col-md-6">
+    <h2>Wyszukuj według sali</h2>
+    <p class="lead">Sprawdź dostępność sali w dogodnym dla siębie terminie</p>
+    <p class="text-justify">Wyszukiwanie wolnych sal jeszcze nigdy nie było tak łatwe. Wystarczy, że podasz datę, a nasz system znajdzie wszystkie wolne sale.</p>
+    <p class="text-center">
+      <%= link_to 'Szukaj wg sali', search_room_path, {class: 'btn btn-success'} %>
+    </p>
+  </div><!-- /.col-md-6 -->
+</div><!-- /.row -->

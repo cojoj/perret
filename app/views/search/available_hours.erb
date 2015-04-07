@@ -1,4 +1,4 @@
-<h1>Dostępne sale</h1>
+<h1>Dostępność sali</h1>
 <br>
 
 <script>
@@ -19,15 +19,19 @@
             day.allDay = false;
             parsed_data.push(day);
         }
-        data = parsed_data;
+        data = parsed_data || 0;
+
+                if (data.length == 0) {
+            return;
+        }
 
         var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
             'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
         var days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa',
             'Czwartek', 'Piątek', 'Sobota'];
         var date_typeof_date = new Date(date);
-        console.log(date_typeof_date);
-        $('#calendar').fullCalendar({
+
+        $('#calendar').empty().fullCalendar({
             defaultDate: new Date(date),
             minTime: '07:30:00',
             maxTime: '21:30:00',
@@ -54,7 +58,7 @@
                 right: 'agendaDay'
             },
             defaultView: 'agendaDay',
-            height: 500,
+            height: 'auto',
             slotMinutes: 60,
             dragOpacity: "0.5",
             timeFormat: 'H(:mm)',
@@ -63,5 +67,7 @@
         })
     });
 </script>
-
-<div id='calendar'></div>
+<% if @alert %>
+    <div class="alert alert-warning"><%= @alert %></div> 
+<% end %>
+<div id='calendar'>Brak wyników, <a onclick="window.history.back()">wróć</a>.</div>
