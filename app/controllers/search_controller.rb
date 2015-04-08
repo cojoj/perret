@@ -25,13 +25,21 @@ class SearchController < ApplicationController
     block_size = search_params[:block_size]
     internal = search_params[:internal]
     @computer_lab = search_params[:computer_lab]
-    @places = DevPlan.instance.available_places(ids, start_date, end_date, block_size, internal)
+    begin 
+      @places = DevPlan.instance.available_places(ids, start_date, end_date, block_size, internal)
+    rescue
+      @alert = 'Wypełnij wszystkie pola.'
+    end
   end
 
   def available_hours
     room_params = params[:search_room]
     @date = room_params[:date];
-    @available_hours = DevPlan.instance.available_rooms(room_params[:room], room_params[:date])
+    begin
+      @available_hours = DevPlan.instance.available_rooms(room_params[:room], room_params[:date])
+    rescue
+      @alert = 'Wypełnij wszystkie pola.'
+    end
   end
 
   def autocomplete_groups

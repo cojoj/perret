@@ -9,7 +9,7 @@
         <div class="form-group">
           <label class="col-lg-2 control-label">Grupy: </label>
           <div class="col-lg-10">
-            <%= p.input :groups, placeholder: 'Wyszukaj grupy', label: false, :input_html => { :id => 'tokeninput', :class => 'col-md-12' } %>
+            <%= p.input :groups, placeholder: 'Podaj nazwę grupy', label: false, :input_html => { :id => 'tokeninput', :class => 'col-md-12' } %>
           </div>
         </div>
 
@@ -23,7 +23,7 @@
         <div class="form-group">
           <label class="col-lg-2 control-label">Szukaj do: </label>
           <div class="col-lg-10">
-            <%= p.input :end_date, :class => "form-control", label: false, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' } %>
+            <%= p.input :end_date, :class => "form-control", label: false, placeholder: Time.now.strftime("%Y-%m-%d"), :input_html => { :id => 'end_date_picker' }%>
           </div>
         </div>
 
@@ -31,6 +31,7 @@
           <label class="col-lg-2 control-label">Ilość wolnych bloków zajęć </label>
           <div class="col-lg-10">
             <%= p.input :block_size, label: false, :class => "form-control", collection: 1..16, selected: 2 %>
+            <small>45 min odpowiada jednemu blokowi zajęć.</small>
           </div>
         </div>
 
@@ -53,7 +54,6 @@
             <%= p.button :submit, 'Szukaj', :class => "btn btn-primary" %>
           </div>
         </div>
-
       </fieldset>
       <% end %>
 </div>

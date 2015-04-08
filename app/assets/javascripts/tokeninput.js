@@ -12,7 +12,7 @@ app.bindTokenInput = function(list, target, tokenLimit) {
         resultsLimit: 10,
         searchingText: "Wyszukuje",
         noResultsText: "Brak pasujących grup",
-        hintText: "Wpisz nazwę grupy",
+        hintText: target.attr('placeholder'),
         searchDelay: 0,
         preventDuplicates: true
     });

@@ -5,6 +5,8 @@
 
     $(document).ready(function() {
 
+        var $calendar = $('#calendar');
+
         var data = '<%= @places.to_json %>';
         var computer_lab = '<%= @computer_lab %>';
         data = data.replace(/&quot;/g, '"');
@@ -31,14 +33,18 @@
             }
 
         }
-        data = parsed_data;
+        data = parsed_data || [];
+
+        if (data.length == 0) {
+            return;
+        }
 
         var months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec',
             'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
         var days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa',
             'Czwartek', 'Piątek', 'Sobota'];
 
-        $('#calendar').fullCalendar({
+        $calendar.empty().fullCalendar({
             defaultDate: new Date(data[0].date),
             monthNames: months,
             monthNamesShort: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze',
@@ -83,11 +89,12 @@
         })
     });
 </script>
-
-<div id='calendar'></div>
-
+<% if @alert %>
+    <div class="alert alert-warning"><%= @alert %></div> 
+<% end %>
+<div id='calendar'>Brak wyników, <a onclick="window.history.back()">wróć</a>.</div>
 <div class="modal" role="dialog" id="modal">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="z-index: 9999">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

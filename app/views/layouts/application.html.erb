@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <%= link_to 'Perret', root_path, class: 'navbar-brand' %>
@@ -25,23 +25,21 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Szukaj wolnych sal', search_room_path %></li>
-        <li><%= link_to 'Szukaj wg. grup', search_group_path %></li>
+        <li><%= link_to 'Szukaj wg grup', search_group_path %></li>
+        <li><%= link_to 'Szukaj wg sali', search_room_path %></li>
       </ul>
     </div>
   </div>
 </div>
 <div class="container">
-  <div class="page-header">
-  </div>
   <%= yield %>
   <footer>
     <div class="row">
       <div class="col-lg-12">
         <br><br>
-        <p>Made by <a href="">devTeam</a>.</p>
-        <p>
-          <a href="http://dev.uek.krakow.pl" target="_blank">Koło Naukowe Programistów >dev</a> | <a href="http://devplan.uek.krakow.pl" target="_blank">devPlan</a>
+        <p>Made by <a href="http://dev.uek.krakow.pl">devTeam</a>.</p>
+        <p class="text-muted">
+          Aplikacja jest częscią projektu <a href="http://devplan.uek.krakow.pl" target="_blank">devPlan</a>.
         </p>
       </div>
     </div>
