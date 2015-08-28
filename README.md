@@ -20,6 +20,6 @@ $ bundle install
 ```  
 When this one was successful you can run your Rails server by typing:
 ```bash
-$ rails s
+$ bundle exec rails s
 ```  
 Now go to your browser and when you enter `localhost:3000` you'll open __Perret__ homepage. Cheers!
