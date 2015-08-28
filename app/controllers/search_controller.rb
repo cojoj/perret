@@ -1,4 +1,4 @@
-require 'dev_plan'
+require 'devplan'
 
 class SearchController < ApplicationController
 
@@ -18,6 +18,7 @@ class SearchController < ApplicationController
   end
 
   def available_places
+
     search_params = params[:search_group]
     ids = search_params[:groups].split(",")
     start_date = search_params[:start_date]
@@ -25,21 +26,26 @@ class SearchController < ApplicationController
     block_size = search_params[:block_size]
     internal = search_params[:internal]
     @computer_lab = search_params[:computer_lab]
+
     begin 
-      @places = DevPlan.instance.available_places(ids, start_date, end_date, block_size, internal)
+      @places = Devplan::Api.instance.available_places(ids, start_date, end_date, block_size, internal)
     rescue
       @alert = 'Wypełnij wszystkie pola.'
     end
+
   end
 
   def available_hours
+
     room_params = params[:search_room]
-    @date = room_params[:date];
+    @date = room_params[:date]
+
     begin
-      @available_hours = DevPlan.instance.available_rooms(room_params[:room], room_params[:date])
+      @available_hours = Devplan::Api.instance.available_places(room_params[:room], room_params[:date])
     rescue
       @alert = 'Wypełnij wszystkie pola.'
     end
+
   end
 
   def autocomplete_groups
@@ -53,11 +59,11 @@ class SearchController < ApplicationController
   private
 
     def get_groups
-      @groups = DevPlan.instance.groups
+      @groups = Devplan::Api.instance.groups
     end
 
     def get_rooms
-      @rooms = DevPlan.instance.places
+      @rooms = Devplan::Api.instance.places
     end
 
 end
